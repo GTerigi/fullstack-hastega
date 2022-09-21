@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->date("dataRimozione")->nullable()->default(null);
             $table->text("trama")->default(null);
             $table->integer("numeroLetture")->default(1);
+            $table->string('iconPath', 255); // Nome del File che funge da copertina del libro
             $table->foreignIdFor(User::class, "userId");
             $table->timestamps();
         });

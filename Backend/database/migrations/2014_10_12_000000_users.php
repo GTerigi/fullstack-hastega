@@ -14,10 +14,11 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('surname');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('name', 255);
+            $table->string('surname', 255);
+            $table->string('email', 255)->unique();
+            $table->char('password', 64); // In sha256
+            $table->string('iconPath', 255); // Nome del File che funge da icona del profilo
             $table->timestamps();
         });
     }
