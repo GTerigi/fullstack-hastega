@@ -1,0 +1,14 @@
+@import "responsive.scss";
+
+div.card-container {
+  border: 1px solid #808B96;
+  margin-inline: auto;
+  box-shadow: 0 2px 1px -1px #566573, 0 1px 1px #566573, 0 1px 3px #273746;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  position: relative;
+  padding: 16px;
+  border-radius: 4px;
+  margin-block: 1rem;
+  width: fit-content;
+}

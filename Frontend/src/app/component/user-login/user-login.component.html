@@ -1,0 +1,14 @@
+<div [class]="last? 'main last' :'main'">
+  <div class="icon">
+    <img [alt]="user.fullname + ' profile Icon'" [src]="user.iconSrc ? user.iconSrc : './../assets/round-default-icon.png'">
+  </div>
+  <div class="details">
+    <p class="name">{{user.fullname}}</p>
+    <div class="spacer"></div>
+    <p class="email">{{user.email}}</p>
+    <!--    <p class="last-read">{{user.lastRead?.title || "N/D"}}</p>-->
+  </div>
+  <div class="login">
+    <button (click)="submitLogin()" color="primary" mat-raised-button>Login</button>
+  </div>
+</div>
