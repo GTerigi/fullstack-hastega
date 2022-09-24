@@ -1,0 +1,29 @@
+$img-dimentions: 5rem;
+
+div.main {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: .25rem;
+  border-bottom: 2px solid var(--primary);
+
+  div.icon {
+    place-self: center;
+
+    img {
+      width: $img-dimentions;
+      height: $img-dimentions;
+      border-radius: 50%;
+    }
+  }
+
+  div.login {
+    align-self: end;
+    margin-left: auto;
+    padding-bottom: .5rem;
+  }
+
+  &.last {
+    border-bottom: unset;
+  }
+}

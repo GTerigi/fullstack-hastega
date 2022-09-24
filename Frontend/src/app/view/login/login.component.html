@@ -1,0 +1,8 @@
+<app-container-card>
+  <span class="title-login">Accedi al portale</span>
+  <div class="divider"></div>
+  <div class="user-list">
+    <app-user-login (onLoginSelection)="storeLoginAndRedirect($event)" *ngFor="let u of users; index as i;" [last]="i===users.length-1"
+                    [user]="u"></app-user-login>
+  </div>
+</app-container-card>

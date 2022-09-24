@@ -15,23 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+Route::get("users", [UserController::class, "index"]);
+Route::get("users/show/{id}", [UserController::class, "show"]);
+Route::get("users/login/{id}", [UserController::class, "login"]);
+Route::post("users/checkToken", [UserController::class, "checkToken"]);
+Route::delete("users/logout/{id}", [UserController::class, "logout"]);
 
-//Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
-//    error_log(sprintf("postID: %s", $postId));
-//    error_log(sprintf("commentId: %s", $commentId));
-//});
-//// Optional Parameters
-//Route::get('/user/{name?}', function ($name = null) {
-//    return json_encode(["ciao" => $name], JSON_THROW_ON_ERROR);
-//});
-
-Route::resource('users', UserController::class)->only([
-    'index', 'show'
-]);
-
-//Route::resource('books', UserController::class)->only([
-//    'index', 'show'
-//]);
