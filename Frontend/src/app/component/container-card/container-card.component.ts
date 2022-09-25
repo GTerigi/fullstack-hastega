@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-container-card',
@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./container-card.component.scss']
 })
 export class ContainerCardComponent implements OnInit {
+  @Input() width!: any;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

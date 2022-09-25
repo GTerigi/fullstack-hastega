@@ -15,6 +15,12 @@ import {ContainerCardComponent} from './component/container-card/container-card.
 import {UserLoginComponent} from './component/user-login/user-login.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {LibrayComponent} from './view/libray/libray.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -25,6 +31,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     LoginComponent,
     ContainerCardComponent,
     UserLoginComponent,
+    LibrayComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +44,14 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     RouterModule.forRoot([
       {path: '', component: IndexComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'library', component: IndexComponent},
+      {path: 'library', component: LibrayComponent},
     ]),
     FontAwesomeModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
