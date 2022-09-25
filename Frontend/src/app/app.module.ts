@@ -21,7 +21,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
-
+import {UserIsLoggedGuard} from "./guard/user-is-logged.guard";
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     RouterModule.forRoot([
       {path: '', component: IndexComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'library', component: LibrayComponent},
+      {path: 'library', component: LibrayComponent, canActivate: [UserIsLoggedGuard]},
     ]),
     FontAwesomeModule,
     MatTableModule,

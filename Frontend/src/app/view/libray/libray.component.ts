@@ -16,19 +16,26 @@ import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
 export class LibrayComponent implements OnInit {
   loggedUser!: User;
   userBooks!: MatTableDataSource<Book>;
-  bookAttributeToDisplay: string[] = ['title', 'author', 'isbn', 'dataAggiunta', 'numeroLetture'];
-  displayColumns: string[] = [...this.bookAttributeToDisplay, 'lensIcon']
+  bookAttributeToDisplay: { objKey: string, header: string }[] = [
+    {objKey: 'title', header: 'Titolo'},
+    {objKey: 'author', header: 'Autore'},
+    {objKey: 'isbn', header: 'ISBN'},
+    {objKey: 'dataAggiunta', header: 'Data di Aggiunta'},
+    {objKey: 'numeroLetture', header: 'Numero di Letture'}
+  ];
+  displayColumns: string[] = [...this.bookAttributeToDisplay.map(el => el.objKey), 'lensIcon']
   faMagnifyingGlass = faMagnifyingGlass;
-  // userBooks: Book[];
+
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private booksService: BooksService, library: FaIconLibrary) {
   }
 
-  alertAll(tmp: any) {
-    alert("CIAO");
+  viewDetail(tmp: Event, selectedBook: Book) {
     console.log(tmp)
+    console.log(selectedBook)
   }
 
   ngOnInit(): void {

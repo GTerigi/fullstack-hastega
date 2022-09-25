@@ -12,14 +12,15 @@
     <!--- Note that these columns can be defined in any order.
       The actual rendered columns are set as a property on the row definition" -->
 
-    <ng-container *ngFor="let column of bookAttributeToDisplay" matColumnDef="{{column}}">
-      <th *matHeaderCellDef mat-header-cell> {{column}} </th>
-      <td *matCellDef="let element" mat-cell> {{element[column]}} </td>
+    <ng-container *ngFor="let column of bookAttributeToDisplay" matColumnDef="{{column.objKey}}">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>  {{column.header}} </th>
+      <td *matCellDef="let element" mat-cell> {{element[column.objKey]}} </td>
     </ng-container>
     <ng-container matColumnDef="lensIcon">
       <th *matHeaderCellDef mat-header-cell></th>
       <td *matCellDef="let element" mat-cell>
-        <fa-icon [classes]="['fa-xl']" [icon]="faMagnifyingGlass" [styles]="{'color':'var(--primary)'}"></fa-icon>
+        <fa-icon (click)="viewDetail($event, element)" [classes]="['fa-xl']" [icon]="faMagnifyingGlass"
+                 [styles]="{'color':'var(--primary)', 'cursor':'pointer'}"></fa-icon>
       </td>
     </ng-container>
 
