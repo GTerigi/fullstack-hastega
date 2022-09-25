@@ -1,0 +1,37 @@
+<app-container-card width="70vw">
+  <div class="welcome">
+    <p>Bentornato <span class="name">{{loggedUser.name}}</span></p>
+  </div>
+  <mat-form-field appearance="standard">
+    <mat-label>Filtra la tabella</mat-label>
+    <input #input (keyup)="applyFilter($event)" matInput placeholder="">
+  </mat-form-field>
+
+
+  <table [dataSource]="userBooks" class="mat-elevation-z8" mat-table matSort>
+    <!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container *ngFor="let column of bookAttributeToDisplay" matColumnDef="{{column.objKey}}">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>  {{column.header}} </th>
+      <td *matCellDef="let element" mat-cell> {{element[column.objKey]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lensIcon">
+      <th *matHeaderCellDef mat-header-cell></th>
+      <td *matCellDef="let element" mat-cell>
+        <fa-icon (click)="viewDetail($event, element)" [classes]="['fa-xl']" [icon]="faMagnifyingGlass"
+                 [styles]="{'color':'var(--primary)', 'cursor':'pointer'}"></fa-icon>
+      </td>
+    </ng-container>
+
+
+    <tr *matHeaderRowDef="displayColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayColumns;" mat-row></tr>
+
+    <tr *matNoDataRow class="mat-row">
+      <td class="mat-cell" colspan="100%">Nessun libro contiene "{{input.value}}"</td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5,10,20]" aria-label=""></mat-paginator>
+
+</app-container-card>

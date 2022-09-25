@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "title": "Fu Sera e Fu Mattina",
+        "author": "Ken Follet",
+        "isbn": "9788804736271",
+        "dataAggiunta": "2022-09-02",
+        "dataRimozione": null,
+        "trama": "Nell'Inghilterra occidentale, vessata dalle invasioni vichinghe, il giovane Edgar è costretto ad adattare la sua professione di costruttore di barche e a trasferirsi in un misero paesino che prende il nome dalla sua chiatta Dreng's Ferry. Ragna, nobile normanna, si trasferisce nella stessa zona, sposando un nobile inglese. Il monaco Aldred cerca di migliorare la sua piccola abbazia, puntando sui libri e sullo sviluppo culturale ed economico, incrociandosi sia con Edgar sia con Ragna. Il malvagio vescovo Wynstan si oppone a tutti e tre, come a chiunque altro ostacoli il suo potere.\n\n",
+        "numeroLetture": 1,
+        "iconPath": null,
+        "userId": 1
+    },
+    {
+        "id": 2,
+        "title": "The Lord of the Rings",
+        "author": "J. R. R. Tolkien",
+        "isbn": "9780007136599",
+        "dataAggiunta": "2021-11-03",
+        "dataRimozione": null,
+        "trama": "Un giovane hobbit e un variegato gruppo, composto da umani, un nano, un elfo e altri hobbit, partono per un delicata missione, guidati dal potente mago Gandalf. Devono distruggere un anello magico e sconfiggere il malvagio Sauron.",
+        "numeroLetture": 2,
+        "iconPath": null,
+        "userId": 1
+    },
+    {
+        "id": 3,
+        "title": "Kitchen Confidenial",
+        "author": "Anthony Bourdain",
+        "isbn": "9788807880292",
+        "dataAggiunta": "2022-08-01",
+        "dataRimozione": null,
+        "trama": "Dopo una gioventù dissipata, all'insegna di droghe e contestazione, Bourdain diventa uno dei cuochi più famosi di New York. Questo libro è il racconto di un'avventura culinaria, uno sguardo dietro le quinte che rivela gli orrori della ristorazione, gli ideali traditi e quelli realizzati.",
+        "numeroLetture": 1,
+        "iconPath": null,
+        "userId": 1
+    },
+    {
+        "id": 4,
+        "title": "Gli Inganni di Locke Lamora",
+        "author": "Scott Lynch",
+        "isbn": "9788804736189",
+        "dataAggiunta": "2022-03-18",
+        "dataRimozione": null,
+        "trama": "Nella misteriosa città di Camorr un orfano ha vita dura, e spesso breve. Ma il giovane Locke Lamora riesce a eludere la morte e a non farsi catturare come schiavo, fino a diventare un furfante provetto sotto la tutela del Forgialadri, un talentuoso artista della truffa. A capo della banda di fratelli dalle dita leste, noti come Bastardi Galantuomini, Locke diventa presto celebre, e si fa beffe persino del più temuto re della malavita. Ma tra le ombre si annida qualcuno di ancora più ambizioso e micidiale. Di fronte a un sanguinoso colpo di stato che minaccia di distruggere qualunque persona o cosa che abbia un senso nella sua esistenza, Locke giura di sconfiggere il nemico al suo stesso gioco crudele. Costi quel che costi.",
+        "numeroLetture": 1,
+        "iconPath": null,
+        "userId": 1
+    }
+]

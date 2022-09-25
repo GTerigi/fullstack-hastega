@@ -43,11 +43,11 @@ export class UserService {
   }
 
   loginUser(user: User): Observable<TokenResponse> {
-    return this.httpC.get<TokenResponse>(`${this.apiUrl}/login/${user.id}`);
+    return this.httpC.get<TokenResponse>(`${this.apiUrl}/${user.id}/login`);
   }
 
   logoutUser(): Observable<any> {
     let userId: Number = Number(localStorage.getItem("userId"));
-    return this.httpC.delete(`${this.apiUrl}/logout/${userId}`)
+    return this.httpC.delete(`${this.apiUrl}/${userId}/logout`)
   }
 }

@@ -5,5 +5,4 @@ export interface User {
   fullname: string;
   email: string;
   iconSrc?: string;
-  lastRead: { title?: string }
 }
