@@ -22,6 +22,10 @@ class Books extends Model
         'isbn',
         'dataAggiunta',
         'numeroLetture',
+        "trama",
+        "dataRimozione",
+        "iconPath",
+        "userId"
     ];
 
     /**

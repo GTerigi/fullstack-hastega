@@ -70,4 +70,18 @@ class UserController extends Controller
         $user->save();
         error_log("Fine");
     }
+
+    public function userBooks(int $id)
+    {
+        $userBooks = User::select("books.*")
+            ->join("books", "books.userId", "=", "users.id")
+            ->where("users.id", "=", $id)
+            ->get()->toArray();
+        foreach ($userBooks as &$book) {
+            $book['dataAggiunta'] = Carbon::createFromFormat("Y-m-d", $book['dataAggiunta'])->format("d/m/Y");
+            $book['dataRimozione'] = (Carbon::canBeCreatedFromFormat("Y-m-d", $book['dataRimozione'])) ?
+                Carbon::createFromFormat("Y-m-d", $book['dataRimozione'])->format("d/m/Y") : null;
+        }
+        return response()->json($userBooks);
+    }
 }

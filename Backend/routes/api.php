@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("users", [UserController::class, "index"]);
-Route::get("users/show/{id}", [UserController::class, "show"]);
-Route::get("users/login/{id}", [UserController::class, "login"]);
+Route::get("users/{id}/show", [UserController::class, "show"]);
+Route::get("users/{id}/login", [UserController::class, "login"]);
+Route::get("users/{id}/books", [UserController::class, "userBooks"]);
 Route::post("users/checkToken", [UserController::class, "checkToken"]);
-Route::delete("users/logout/{id}", [UserController::class, "logout"]);
+Route::delete("users/{id}/logout", [UserController::class, "logout"]);
 
+//Route::get("book/user/{id}")
