@@ -1,0 +1,33 @@
+<app-container-card width="70vw">
+  <div class="flex">
+    <div class="icon">
+      <img [alt]="bookInfo.title || 'Copertina mancante'" [src]="bookInfo.iconSrc || './../assets/missing-book-cover.png'">
+    </div>
+    <div class="details">
+      <p class="title">{{bookInfo.title}}</p>
+      <p class="author">{{bookInfo.author}}</p>
+      <div class="trama">
+        <p>Trama:</p>
+        <p>{{bookInfo.trama}}</p>
+      </div>
+      <div class="justify-between">
+        <button color="primary" mat-raised-button>Incrementa il contatore
+          <fa-icon [icon]="faPlus"></fa-icon>
+        </button>
+        <button *ngIf="bookInfo.dataRimozione === null" color="primary" mat-raised-button>Elimina il libro
+          <fa-icon [icon]="faHeartCrack"></fa-icon>
+        </button>
+        <button *ngIf="bookInfo.dataRimozione !== null" color="primary" mat-raised-button> Salva di nuovo il libro
+          <fa-icon [icon]="faHeart"></fa-icon>
+        </button>
+      </div>
+      <div class="info-tecniche">
+        <p class="isbn">ISBN: {{bookInfo.isbn}}</p>
+        <p class="date">
+          <span>Aggiunto in data {{bookInfo.dataAggiunta}}</span>
+          <span *ngIf="bookInfo.dataRimozione">Rimosso in data {{bookInfo.dataRimozione}}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</app-container-card>

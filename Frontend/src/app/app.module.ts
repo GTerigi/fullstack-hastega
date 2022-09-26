@@ -15,13 +15,15 @@ import {ContainerCardComponent} from './component/container-card/container-card.
 import {UserLoginComponent} from './component/user-login/user-login.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {LibrayComponent} from './view/libray/libray.component';
+import {libraryComponent} from './view/library/library.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {UserIsLoggedGuard} from "./guard/user-is-logged.guard";
+import {NotFoundComponent} from './view/not-found/not-found.component';
+import {BookDetailsComponent} from './view/book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {UserIsLoggedGuard} from "./guard/user-is-logged.guard";
     LoginComponent,
     ContainerCardComponent,
     UserLoginComponent,
-    LibrayComponent,
+    libraryComponent,
+    NotFoundComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,9 @@ import {UserIsLoggedGuard} from "./guard/user-is-logged.guard";
     RouterModule.forRoot([
       {path: '', component: IndexComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'library', component: LibrayComponent, canActivate: [UserIsLoggedGuard]},
+      {path: 'library', component: libraryComponent, canActivate: [UserIsLoggedGuard]},
+      {path: 'book/:bookId', component: BookDetailsComponent, canActivate: [UserIsLoggedGuard]},
+      {path: '**', component: NotFoundComponent},
     ]),
     FontAwesomeModule,
     MatTableModule,

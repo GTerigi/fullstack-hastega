@@ -1,0 +1,30 @@
+div.flex {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+div.trama {
+  font-size: 1.1rem;
+  padding: 1rem .5rem;
+  border-block: 2px solid var(--primary);
+  margin-bottom: 1rem;
+
+  p {
+    margin: 0;
+
+    &:first-of-type {
+      font-size: 1.3rem;
+      font-weight: 650;
+      margin-bottom: 5px;
+    }
+  }
+
+
+}
+
+div.justify-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

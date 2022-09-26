@@ -6,14 +6,14 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons"
-import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-libray',
-  templateUrl: './libray.component.html',
-  styleUrls: ['./libray.component.scss'],
+  selector: 'app-library',
+  templateUrl: './library.component.html',
+  styleUrls: ['./library.component.scss'],
 })
-export class LibrayComponent implements OnInit {
+export class libraryComponent implements OnInit {
   loggedUser!: User;
   userBooks!: MatTableDataSource<Book>;
   bookAttributeToDisplay: { objKey: string, header: string }[] = [
@@ -30,12 +30,11 @@ export class LibrayComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private booksService: BooksService, library: FaIconLibrary) {
+  constructor(private booksService: BooksService, private router: Router) {
   }
 
   viewDetail(tmp: Event, selectedBook: Book) {
-    console.log(tmp)
-    console.log(selectedBook)
+    this.router.navigate(['/book', selectedBook.id]);
   }
 
   ngOnInit(): void {
