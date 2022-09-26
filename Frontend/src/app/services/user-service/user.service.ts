@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
 import {User} from "../../interface/User";
 import {TokenResponse} from "../../interface/TokenResponse";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,10 @@ import {TokenResponse} from "../../interface/TokenResponse";
 export class UserService {
   private apiUrl = `${environment.baseUrl}/users`;
 
-  constructor(private httpC: HttpClient) {
+  constructor(private httpC: HttpClient, private router: Router) {
   }
 
-  isLogged(): Observable<boolean> {
+  isLogged(redirect: boolean = false): Observable<boolean> {
     let currentTimestamp: number = Math.floor(Date.now() / 1000); // Formattato nello stesso formato del Php
     let toReturn = new Subject<boolean>();
     if (localStorage.getItem("userId") === null ||
@@ -22,6 +23,7 @@ export class UserService {
       localStorage.getItem("tokenExp") === null ||
       Number(localStorage.getItem("tokenExp")) <= currentTimestamp) {
       toReturn.next(false);
+      if (redirect) this.router.navigateByUrl("/login");
       return toReturn.asObservable();
     }
     this.httpC.post<String>(`${this.apiUrl}/checkToken`, {
@@ -29,12 +31,16 @@ export class UserService {
         token: localStorage.getItem("token"),
       }
     ).subscribe({
-      next: (isTokenValid) => toReturn.next(Boolean(isTokenValid)),
+      next: (isTokenValid) => {
+        if (redirect && !isTokenValid) this.router.navigateByUrl("/login");
+        toReturn.next(Boolean(isTokenValid))
+      },
       error: (err) => {
         console.error(err);
         toReturn.next(false);
       }
     });
+
     return toReturn.asObservable();
   }
 
