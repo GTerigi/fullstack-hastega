@@ -3,8 +3,8 @@ export interface Book {
   title: string;
   author: string;
   isbn: string;
-  dataAggiunta: Date;
-  dataRimozione: Date | null;
+  dataAggiunta: string;
+  dataRimozione: string | null;
   trama: string;
   numeroLetture: number;
   userId: number;

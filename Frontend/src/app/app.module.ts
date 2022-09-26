@@ -23,6 +23,7 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {UserIsLoggedGuard} from "./guard/user-is-logged.guard";
 import {NotFoundComponent} from './view/not-found/not-found.component';
+import {BookDetailsComponent} from './view/book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {NotFoundComponent} from './view/not-found/not-found.component';
     UserLoginComponent,
     libraryComponent,
     NotFoundComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ import {NotFoundComponent} from './view/not-found/not-found.component';
       {path: '', component: IndexComponent},
       {path: 'login', component: LoginComponent},
       {path: 'library', component: libraryComponent, canActivate: [UserIsLoggedGuard]},
-      {path: 'book/:bookId', component: libraryComponent, canActivate: [UserIsLoggedGuard]},
+      {path: 'book/:bookId', component: BookDetailsComponent, canActivate: [UserIsLoggedGuard]},
       {path: '**', component: NotFoundComponent},
     ]),
     FontAwesomeModule,

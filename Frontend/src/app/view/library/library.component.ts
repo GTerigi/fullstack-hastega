@@ -6,7 +6,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons"
-import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-library',
@@ -30,12 +30,11 @@ export class libraryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private booksService: BooksService, library: FaIconLibrary) {
+  constructor(private booksService: BooksService, private router: Router) {
   }
 
   viewDetail(tmp: Event, selectedBook: Book) {
-    console.log(tmp)
-    console.log(selectedBook)
+    this.router.navigate(['/book', selectedBook.id]);
   }
 
   ngOnInit(): void {
