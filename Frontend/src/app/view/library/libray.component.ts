@@ -9,11 +9,11 @@ import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons"
 import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
 
 @Component({
-  selector: 'app-libray',
-  templateUrl: './libray.component.html',
-  styleUrls: ['./libray.component.scss'],
+  selector: 'app-library',
+  templateUrl: './library.component.html',
+  styleUrls: ['./library.component.scss'],
 })
-export class LibrayComponent implements OnInit {
+export class libraryComponent implements OnInit {
   loggedUser!: User;
   userBooks!: MatTableDataSource<Book>;
   bookAttributeToDisplay: { objKey: string, header: string }[] = [
