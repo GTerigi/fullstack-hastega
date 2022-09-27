@@ -1,33 +1,39 @@
 <app-container-card width="70vw">
-  <div class="flex">
+  <section>
     <div class="icon">
-      <img [alt]="bookInfo.title || 'Copertina mancante'" [src]="bookInfo.iconSrc || './../assets/missing-book-cover.png'">
+      <img *ngIf="!iconIsLoading; else noImageFound"
+           [@fadeIn]="transitionState"
+           [alt]="bookInfo.title "
+           [src]="iconSrc">
+      <ng-template #noImageFound>
+        <img [src]="fallbackIcon" alt="Copertina mancante">
+      </ng-template>
     </div>
     <div class="details">
       <p class="title">{{bookInfo.title}}</p>
-      <p class="author">{{bookInfo.author}}</p>
+      <p class="author">Di <span>{{bookInfo.author}}</span></p>
+      <p class="info-tecniche">
+        <span>ISBN: {{bookInfo.isbn}}</span>
+        <span>Numero di letture: {{bookInfo.numeroLetture}}</span></p>
       <div class="trama">
         <p>Trama:</p>
         <p>{{bookInfo.trama}}</p>
       </div>
+      <p class="date">
+        <span>Aggiunto in data {{bookInfo.dataAggiunta}}</span>
+        <span *ngIf="bookInfo.dataRimozione">Rimosso in data {{bookInfo.dataRimozione}}</span>
+      </p>
       <div class="justify-between">
-        <button color="primary" mat-raised-button>Incrementa il contatore
+        <button (click)="increaseCounter()" color="primary" mat-raised-button>Incrementa il contatore
           <fa-icon [icon]="faPlus"></fa-icon>
         </button>
-        <button *ngIf="bookInfo.dataRimozione === null" color="primary" mat-raised-button>Elimina il libro
+        <button (click)="deleteBook()" *ngIf="bookInfo.dataRimozione === null" color="primary" mat-raised-button>Elimina il libro
           <fa-icon [icon]="faHeartCrack"></fa-icon>
         </button>
-        <button *ngIf="bookInfo.dataRimozione !== null" color="primary" mat-raised-button> Salva di nuovo il libro
+        <button (click)="insertBookAgain()" *ngIf="bookInfo.dataRimozione !== null" color="primary" mat-raised-button> Salva di nuovo il libro
           <fa-icon [icon]="faHeart"></fa-icon>
         </button>
       </div>
-      <div class="info-tecniche">
-        <p class="isbn">ISBN: {{bookInfo.isbn}}</p>
-        <p class="date">
-          <span>Aggiunto in data {{bookInfo.dataAggiunta}}</span>
-          <span *ngIf="bookInfo.dataRimozione">Rimosso in data {{bookInfo.dataRimozione}}</span>
-        </p>
-      </div>
     </div>
-  </div>
+  </section>
 </app-container-card>

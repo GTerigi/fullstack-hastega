@@ -26,7 +26,7 @@
 
 
     <tr *matHeaderRowDef="displayColumns" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: displayColumns;" mat-row></tr>
+    <tr *matRowDef="let row; columns: displayColumns;" [ngClass]="row.dataRimozione !==null ? 'red-border' : ''" mat-row></tr>
 
     <tr *matNoDataRow class="mat-row">
       <td class="mat-cell" colspan="100%">Nessun libro contiene "{{input.value}}"</td>

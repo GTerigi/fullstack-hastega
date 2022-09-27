@@ -21,7 +21,8 @@ export class libraryComponent implements OnInit {
     {objKey: 'author', header: 'Autore'},
     {objKey: 'isbn', header: 'ISBN'},
     {objKey: 'dataAggiunta', header: 'Data di Aggiunta'},
-    {objKey: 'numeroLetture', header: 'Numero di Letture'}
+    {objKey: 'numeroLetture', header: 'Numero di Letture'},
+    {objKey: 'dataRimozione', header: 'Data di Rimozione'}
   ];
   displayColumns: string[] = [...this.bookAttributeToDisplay.map(el => el.objKey), 'lensIcon']
   faMagnifyingGlass = faMagnifyingGlass;
