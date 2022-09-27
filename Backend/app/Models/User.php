@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @method static findOrFail(int $id)
+ */
 class User extends Authenticatable
 {
     public $primaryKey = "id";

@@ -39,7 +39,7 @@ class UserController extends Controller
     public function login(int $id)
     {
         $token = Str::random(80);
-        $tokenExp = Carbon::now()->addDays(7); //->toDateTimeString('second');
+        $tokenExp = Carbon::now()->addDays(7);
         $user = User::query()->findOrFail($id);
         $user->token = $token;
         $user->tokenExp = $tokenExp;
@@ -71,17 +71,25 @@ class UserController extends Controller
         error_log("Fine");
     }
 
-    public function userBooks(int $id)
-    {
-        $userBooks = User::select("books.*")
-            ->join("books", "books.userId", "=", "users.id")
-            ->where("users.id", "=", $id)
-            ->get()->toArray();
-        foreach ($userBooks as &$book) {
-            $book['dataAggiunta'] = Carbon::createFromFormat("Y-m-d", $book['dataAggiunta'])->format("d/m/Y");
-            $book['dataRimozione'] = (Carbon::canBeCreatedFromFormat("Y-m-d", $book['dataRimozione'])) ?
-                Carbon::createFromFormat("Y-m-d", $book['dataRimozione'])->format("d/m/Y") : null;
+
+    public function getIcon(int $id){
+        $userInfo = User::findOrFail($id);
+        if(empty($userInfo->iconName)) return response()->json(["error"=>"Icon not found."],404);
+
+        $path = resource_path()."/icon/users/".$userInfo->iconName;
+
+        if(!File::exists($path)) return response()->json(["error"=>"Icon not found."],404);
+
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        try {
+            $response = response()->make($file, 200);
+            $response->header("Content-Type", $type);
+            return $response;
+        } catch (BindingResolutionException $e) {
+            return response()->json(["error"=>"Icon not found."],404);
         }
-        return response()->json($userBooks);
     }
+
 }

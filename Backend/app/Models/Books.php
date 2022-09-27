@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static findOrFail(int $id)
+ */
 class Books extends Model
 {
 
@@ -24,7 +27,7 @@ class Books extends Model
         'numeroLetture',
         "trama",
         "dataRimozione",
-        "iconPath",
+        "iconName",
         "userId"
     ];
 

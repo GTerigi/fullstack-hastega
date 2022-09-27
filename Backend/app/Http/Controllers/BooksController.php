@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Books;
 use Carbon\Carbon;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 
 class BooksController extends Controller
 {
@@ -30,5 +33,25 @@ class BooksController extends Controller
             Carbon::createFromFormat("Y-m-d", $bookInfo['dataRimozione'])->format("d/m/Y") : null;
 
         return response()->json($bookInfo);
+    }
+
+    public function getIcon(int $id){
+        $bookInfo = Books::findOrFail($id);
+        if(empty($bookInfo->iconName)) return response()->json(["error"=>"Icon not found."],404);
+
+        $path = resource_path()."/icon/books/".$bookInfo->iconName;
+
+        if(!File::exists($path)) return response()->json(["error"=>"Icon not found."],404);
+
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        try {
+            $response = response()->make($file, 200);
+            $response->header("Content-Type", $type);
+            return $response;
+        } catch (BindingResolutionException $e) {
+            return response()->json(["error"=>"Icon not found."],404);
+        }
     }
 }

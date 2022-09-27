@@ -34,7 +34,7 @@ Ogni libro è identificato da i seguenti attributi:
 | dataRimozione | date | |
 | trama | text | |
 | numeroLetture | int | |
-| iconPath | varchar(255) | |
+| iconName | varchar(255) | |
 | userId | bigint unsiged | FK |
 
 ### Users
@@ -46,7 +46,7 @@ Ogni utente è identificato da i seguenti attributi:
 | surname | varchar(255) | |
 | email | varchar(255) | |
 | password | varchar(64) | |
-| iconPath | varchar(255) | |
+| iconName | varchar(255) | |
 
 
 ## Specifiche Tecniche
