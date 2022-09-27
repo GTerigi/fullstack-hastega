@@ -25,7 +25,7 @@ class Books extends Model
         'numeroLetture',
         "trama",
         "dataRimozione",
-        "iconName",
+        'iconName',
         "userId"
     ];
 

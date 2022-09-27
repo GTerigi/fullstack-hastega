@@ -21,11 +21,14 @@ Route::get("users/{id}/show", [UserController::class, "show"]);
 Route::get("users/{id}/login", [UserController::class, "login"]);
 Route::post("users/checkToken", [UserController::class, "checkToken"]);
 Route::delete("users/{id}/logout", [UserController::class, "logout"]);
-Route::get("users/{id}/icon",[UserController::class,"getIcon"]);
+Route::post("users/{id}/icon", [UserController::class, "getIcon"]);
 
 Route::get("books/users/{id}", [BooksController::class, "userBooks"])->middleware("checkToken");
 Route::get("books/{id}", [BooksController::class, "getBookInfo"])->middleware("checkToken");
-Route::get("books/{id}/icon",[BooksController::class,"getIcon"])->middleware("checkToken");
+Route::post("books/{id}/icon", [BooksController::class, "getIcon"])->middleware("checkToken");
+Route::put("books/{id}/counter", [BooksController::class, "increaseCounter"])->middleware("checkToken");
+Route::put("books/{id}/delete", [BooksController::class, "remove"])->middleware("checkToken");
+Route::put("books/{id}/restore", [BooksController::class, "restore"])->middleware("checkToken");
 
 Route::get("unauthorized", ["as" => "unauthorized", "uses" => function () {
     http_response_code(401);

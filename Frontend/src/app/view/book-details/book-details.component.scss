@@ -1,8 +1,43 @@
-div.flex {
+section {
   display: flex;
   flex-direction: row;
   gap: 3rem;
+
+  div.icon {
+    flex: 1 0 35%;
+
+    img {
+      width: 100%
+    }
+  }
+
+  div.details {
+    flex: 1 1 65%;
+
+    p.title {
+      font-size: 2rem;
+      font-weight: 650;
+      text-decoration: underline;
+    }
+
+    p.author span {
+      font-style: italic;
+    }
+
+    p.info-tecniche {
+      font-size: .8em;
+
+      span:last-of-type {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  p.date span:first-of-type {
+    margin-right: 1rem;
+  }
 }
+
 
 div.trama {
   font-size: 1.1rem;

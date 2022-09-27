@@ -8,7 +8,11 @@ div.main {
   border-bottom: 2px solid var(--primary);
 
   div.icon {
+    width: 5rem;
+    height: 5rem;
+
     place-self: center;
+    background-color: inherit;
 
     img {
       width: $img-dimentions;

@@ -1,6 +1,12 @@
 <div [class]="last? 'main last' :'main'">
   <div class="icon">
-    <img [alt]="user.fullname + ' profile Icon'" [src]="user.iconSrc ? user.iconSrc : './../assets/round-default-icon.png'">
+    <img *ngIf="!iconIsLoading; else noImageFound"
+         [@fadeIn]="transitionState"
+         [alt]="user.fullname + ' profile Icon'"
+         [src]="iconSrc">
+    <ng-template #noImageFound>
+      <img [src]="fallbackIcon" alt="User icon not found.">
+    </ng-template>
   </div>
   <div class="details">
     <p class="name">{{user.fullname}}</p>

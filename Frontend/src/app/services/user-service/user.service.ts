@@ -56,4 +56,8 @@ export class UserService {
     let userId: Number = Number(localStorage.getItem("userId"));
     return this.httpC.delete(`${this.apiUrl}/${userId}/logout`)
   }
+
+  getIcon(userId: number) {
+    return this.httpC.post<any>(`${this.apiUrl}/${userId}/icon`, {}, {responseType: 'blob' as 'json'});
+  }
 }
