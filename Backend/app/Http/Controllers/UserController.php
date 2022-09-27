@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -72,13 +73,15 @@ class UserController extends Controller
     }
 
 
-    public function getIcon(int $id){
+    public function getIcon(int $id)
+    {
         $userInfo = User::findOrFail($id);
-        if(empty($userInfo->iconName)) return response()->json(["error"=>"Icon not found."],404);
+        error_log($userInfo->iconName);
+        if (empty($userInfo->iconName)) return response()->json(["error" => "Icon not found."], 404);
 
-        $path = resource_path()."/icon/users/".$userInfo->iconName;
+        $path = resource_path() . "/icon/users/" . $userInfo->iconName;
 
-        if(!File::exists($path)) return response()->json(["error"=>"Icon not found."],404);
+        if (!File::exists($path)) return response()->json(["error" => "Icon not found."], 404);
 
         $file = File::get($path);
         $type = File::mimeType($path);
@@ -88,7 +91,7 @@ class UserController extends Controller
             $response->header("Content-Type", $type);
             return $response;
         } catch (BindingResolutionException $e) {
-            return response()->json(["error"=>"Icon not found."],404);
+            return response()->json(["error" => "Icon not found."], 404);
         }
     }
 
