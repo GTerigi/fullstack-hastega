@@ -24,6 +24,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {UserIsLoggedGuard} from "./guard/user-is-logged.guard";
 import {NotFoundComponent} from './view/not-found/not-found.component';
 import {BookDetailsComponent} from './view/book-details/book-details.component';
+import {MatListModule} from "@angular/material/list";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import {BookDetailsComponent} from './view/book-details/book-details.component';
     MatInputModule,
     MatSortModule,
     MatPaginatorModule,
+    MatListModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

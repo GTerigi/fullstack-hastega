@@ -108,6 +108,9 @@
       <path value="$PROJECT_DIR$/Backend/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/Backend/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/Backend/vendor/composer" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/uid" />
+      <path value="$PROJECT_DIR$/Backend/vendor/symfony/polyfill-uuid" />
+      <path value="$PROJECT_DIR$/Backend/vendor/_laravel_idea" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

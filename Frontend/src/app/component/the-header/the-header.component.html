@@ -4,16 +4,39 @@
       <img alt="logo" src="./../assets/Logo-Hastega-64x64.png">
       <h2>{{title}}</h2>
     </div>
-    <div class="navigation">
-      <a routerLink="/">Home</a>
-      <a *ngIf="isLogged" routerLink="/library">La mia Libreria</a>
+    <div *ngIf="!useNavbarMenu else navbarMenu" class="desktop">
+      <div class="navigation">
+        <a routerLink="/">Home</a>
+        <a *ngIf="isLogged" routerLink="/library">La mia Libreria</a>
+      </div>
+      <div class="spacer"></div>
+      <div class="login">
+        <button *ngIf="!isLogged && !isLoginRoute" mat-raised-button routerLink="/login">Login</button>
+        <button (click)="logoutUser()" *ngIf="isLogged" mat-raised-button>Logout</button>
+      </div>
     </div>
-    <div class="spacer"></div>
-    <div class="login">
-      <button *ngIf="!isLogged && !isLoginRoute" mat-raised-button routerLink="/login">Login</button>
-      <!--      <button *ngIf="!isLogged && isLoginRoute" mat-raised-button routerLink="/">Torna alla Home</button>-->
-      <button (click)="logoutUser()" *ngIf="isLogged" mat-raised-button>Logout</button>
-    </div>
+    <ng-template #navbarMenu>
+      <div class="mobile">
+        <button [matMenuTriggerFor]="menu" mat-icon-button>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <mat-list>
+            <mat-list-item *ngIf="!isLogged && !isLoginRoute">
+              <button color="primary" mat-raised-button routerLink="/login">Login</button>
+            </mat-list-item>
+            <mat-list-item *ngIf="isLogged">
+              <button color="primary" mat-raised-button routerLink="/library">La mia Libreria</button>
+            </mat-list-item>
+            <mat-list-item *ngIf="isLogged">
+              <button (click)="logoutUser()" color="primary" mat-raised-button>Logout</button>
+            </mat-list-item>
+          </mat-list>
+
+        </mat-menu>
+      </div>
+    </ng-template>
+
   </mat-toolbar>
 </section>
 <!-- TODO Make a menu box on screen breakpoint -->
