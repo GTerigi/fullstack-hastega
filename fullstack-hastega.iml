@@ -2,7 +2,17 @@
 <module type="GENERAL_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Backend/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/Backend/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/Backend/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/Backend/tests" isTestSource="true" packagePrefix="Tests\" />
+      <excludeFolder url="file://$MODULE_DIR$/Backend/vendor/symfony/uid" />
+      <excludeFolder url="file://$MODULE_DIR$/Backend/vendor/symfony/polyfill-uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/Backend/storage/app" />
+      <excludeFolder url="file://$MODULE_DIR$/Backend/storage/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/Backend/vendor/_laravel_idea" />
+    </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
