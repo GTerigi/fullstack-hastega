@@ -16,19 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("users", [UserController::class, "index"]);
-Route::get("users/{id}/show", [UserController::class, "show"]);
-Route::get("users/{id}/login", [UserController::class, "login"]);
-Route::post("users/checkToken", [UserController::class, "checkToken"]);
-Route::delete("users/{id}/logout", [UserController::class, "logout"]);
-Route::post("users/{id}/icon", [UserController::class, "getIcon"]);
+Route::get("users", [UserController::class, "index"])->middleware("cors");
+Route::get("users/{id}/show", [UserController::class, "show"])->middleware("cors");;
+Route::get("users/{id}/login", [UserController::class, "login"])->middleware("cors");;
+Route::post("users/checkToken", [UserController::class, "checkToken"])->middleware("cors");;
+Route::delete("users/{id}/logout", [UserController::class, "logout"])->middleware("cors");;
+Route::post("users/{id}/icon", [UserController::class, "getIcon"])->middleware("cors");;
 
-Route::get("books/users/{id}", [BooksController::class, "userBooks"])->middleware("checkToken");
-Route::get("books/{id}", [BooksController::class, "getBookInfo"])->middleware("checkToken");
-Route::post("books/{id}/icon", [BooksController::class, "getIcon"])->middleware("checkToken");
-Route::put("books/{id}/counter", [BooksController::class, "increaseCounter"])->middleware("checkToken");
-Route::put("books/{id}/delete", [BooksController::class, "remove"])->middleware("checkToken");
-Route::put("books/{id}/restore", [BooksController::class, "restore"])->middleware("checkToken");
+Route::get("books/users/{id}", [BooksController::class, "userBooks"])->middleware(["checkToken", "cors"]);
+Route::get("books/{id}", [BooksController::class, "getBookInfo"])->middleware(["checkToken", "cors"]);
+Route::post("books/{id}/icon", [BooksController::class, "getIcon"])->middleware(["checkToken", "cors"]);
+Route::put("books/{id}/counter", [BooksController::class, "increaseCounter"])->middleware(["checkToken", "cors"]);
+Route::put("books/{id}/delete", [BooksController::class, "remove"])->middleware(["checkToken", "cors"]);
+Route::put("books/{id}/restore", [BooksController::class, "restore"])->middleware(["checkToken", "cors"]);
 
 Route::get("unauthorized", ["as" => "unauthorized", "uses" => function () {
     http_response_code(401);
